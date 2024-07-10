@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only [:show, :edit, :update]
+  before_action :set_category, only: [:show, :edit, :update]
 
   def new
     @category = Category.new
@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
       if @category.update(category_params)
         format.html { redirect_to category_url(@category), notice: "Updated successfully" }
       else 
-        format.html { respond :edit, status: :unprocessable_entity, notice: "Update failed!"}
+        format.html { render :edit, status: :unprocessable_entity}
       end
     end
   end
