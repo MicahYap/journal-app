@@ -21,5 +21,6 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "should show category" do
     get category_url(@category)
     assert_response :success
+  end
 
 end
