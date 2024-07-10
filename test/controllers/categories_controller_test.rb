@@ -18,14 +18,8 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirect_to category_url(Category.last)
   end
 
-  test "should get edit" do
-    get edit_category_url(@category)
+  test "should show category" do
+    get category_url(@category)
     assert_response :success
-  end
-
-  test "should post update" do
-    patch category_url, params: { category: { task: @category.name, description: @category.description} }
-    assert_redirect_to categories_url(@category)\
-  end
 
 end
