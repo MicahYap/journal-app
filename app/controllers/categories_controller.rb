@@ -1,5 +1,9 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update]
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @categories = Category.all
+  end
 
   def new
     @category = Category.new
@@ -31,6 +35,14 @@ class CategoriesController < ApplicationController
       else 
         format.html { render :edit, status: :unprocessable_entity}
       end
+    end
+  end
+
+  def destroy
+    @category.destroy!
+
+    respond_to do |format|
+      format.html {redirect_to categories_url, notice: "Deleted successfully."}
     end
   end
 

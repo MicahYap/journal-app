@@ -3,10 +3,11 @@
 <h1>Editing category</h1>
 
 <%= render "form", category: @category %>
+<%= button_to "Delete", @category, method: :delete %>
 
 <br>
 
 <div>
-  <%= link_to "Show this category", @category %> |
-  <%= link_to "Create new category", new_category_path %>
+  <%= link_to "Show this task", @category %> <br>
+  <%= link_to "Back to categories", categories_path %>
 </div>

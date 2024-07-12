@@ -11,7 +11,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create category" do
-    assert_difference ("category.count") do
+    assert_difference ("Category.count") do
       post categories_url, params: { category: { task: @category.name, description: @category.description } }
     end
 
@@ -21,6 +21,13 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "should show category" do
     get category_url(@category)
     assert_response :success
+  end
+
+  test "should delete category" do
+    assert_difference("Category.count", -1) do
+      delete category_url(@category)
+    end
+    assert_redirect_to new_category_url
   end
 
 end
