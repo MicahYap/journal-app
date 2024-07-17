@@ -1,0 +1,7 @@
+<h1> Edit Task: </h1>
+<%= render "form", task: [@category, @task] %>
+<%= button_to "Delete", [@category, @task], method: :delete %>
+
+<br>
+<%= link_to "Show this task", [@category, @task] %>
+<%= link_to "Back to tasks", category_tasks_path(@category, @task) %>

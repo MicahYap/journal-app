@@ -1,0 +1,13 @@
+<h1>Tasks:</h1>
+
+<div>
+  <% @tasks.each do |task|%>
+    <ul>
+      <li style="font-size: 25px;"><%= render "task", task: task %></li>
+        <span style="font-size: 18px;"><%= link_to "Show details", category_task_path(@category, task) %></span>
+    </ul>
+  <%end%>
+</div>
+
+<%=link_to "New Task", new_category_task_path(@category)%> <br>
+<%= link_to "Back to Category", category_path(@category)%>
