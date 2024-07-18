@@ -1,13 +1,13 @@
 <% content_for :title, "Categories" %>
 
-<h1>Categories:<h1>
+<h1>Categories:</h1>
 
 <div>
   <% @categories.each do |category| %>
     <ul>
-      <li style="font-size: 25px;"><%= category.category %></li>
+      <li style="font-size: 25px;"><%= category.name %></li>
       <span style="font-size: 18px;"><%= link_to "Show this category", category %></span>
-    </ul
+    </ul>
 
   <% end %>
 
@@ -15,3 +15,25 @@
 <br>
 
 <%= link_to "New category", new_category_path %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Category</th>
+      <th>Task</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.date %></td>
+        <td><%= task.category.name %></td>
+        <td><%= task.task %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

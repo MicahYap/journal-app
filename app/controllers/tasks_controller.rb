@@ -44,7 +44,7 @@ end
 
 private
   def task_params
-    params.require(:task).permit(:task, :description)
+    params.require(:task).permit(:task, :description, :date)
   end
 
   def get_category

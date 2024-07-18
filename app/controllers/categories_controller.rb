@@ -3,23 +3,21 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    @tasks = Task.all.where(date: Date.today)
   end
 
   def new
     @category = Category.new
   end
 
-  def create
+  def create  
     @category = Category.new(category_params)
-
-    respond_to do |format|
       if @category.save
-        format.html { redirect_to category_url(@category), notice: "Created successfully!"}
+        redirect_to category_url(@category), notice: "Created successfully!"
 
       else
-        format.html {render :new, status: :unprocessable_entity, notice: "Creation failed!"}
+        render :new, status: :unprocessable_entity, notice: "Creation failed!"
       end
-    end  
   end
 
   def show
@@ -29,21 +27,17 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to category_url(@category), notice: "Updated successfully" }
+        redirect_to category_url(@category), notice: "Updated successfully"
       else 
-        format.html { render :edit, status: :unprocessable_entity}
+        render :edit, status: :unprocessable_entity
       end
-    end
+
   end
 
   def destroy
     @category.destroy!
-
-    respond_to do |format|
-      format.html {redirect_to categories_url, notice: "Deleted successfully."}
-    end
+      redirect_to categories_url, notice: "Deleted successfully."
   end
 
 
@@ -55,5 +49,5 @@ def set_category
 end
 
 def category_params
-  params.require(:category).permit(:task, :description)
+  params.require(:category).permit( :name, :description)
 end
