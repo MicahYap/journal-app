@@ -20,12 +20,11 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create task" do
     assert_difference('Task.count') do
-      post category_tasks_path(@category), params: { task: { task: @task.task, description: @task.description, date: @task.date } }
+      post category_tasks_path(@category), params: { task: { name: "New Task", description: "Task Description", date: "2024-07-19" } }
     end
-
     assert_redirected_to category_task_path(@category, Task.last)
   end
-
+  
   test "should show task" do
     get category_task_path(@category, @task)
     assert_response :success

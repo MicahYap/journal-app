@@ -11,8 +11,9 @@ class TaskTest < ActiveSupport::TestCase
     assert_not task.save, 'Saved the task without a description!'
   end
 
-  test 'should save with both task name and description' do
-    task = Task.new(task: 'task name here', description: 'description here', date: 'date here')
-    assert task.save, 'Could not save the task with both task name and description'
+  test "should save with both task name and description" do
+    task = Task.new(task: "Test Task", description: "Test Description")
+    assert task.save
   end
+  
 end
